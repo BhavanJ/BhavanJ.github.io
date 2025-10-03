@@ -1,230 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bhavan Jasani</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,‌​100italic,300,300ita‌​lic,400italic,500,50‌​0italic,700,700itali‌​c,900italic,900' rel='stylesheet' type='text/css'>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css" />
-  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://bhavanj.github.io/" />
-  <meta property="og:title" content="Bhavan Jasani" />
-  <meta property="og:description" content="Graduate Student, Robotics Institute, Carnegie Mellon University" />
-  <meta property="og:image" content="https://bhavanj.github.io/static/img/BJ_profile_pic.jpg" />
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:domain" value="bhavanj.github.io" />
-  <meta name="twitter:title" value="Bhavan Jasani" />
-  <meta name="twitter:description" value="Graduate Student, Robotics Institute, Carnegie Mellon University" />
-  <meta name="twitter:image" content="https://bhavanj.github.io/static/img/BJ_profile_pic.jpg" />
-  <meta name="twitter:url" value="http://bhavanj.github.io" />
-  <meta name="twitter:label1" value="Graduate Student" />
-  <meta name="twitter:data1" value="Robotics Institute, Carnegie Mellon University" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhavan Jasani — Applied Scientist</title>
+  <meta name="description" content="Bhavan Jasani — Applied Scientist focused on computer vision, multimodal AI, and practical ML systems for healthcare-impactful applications." />
+  <link rel="icon" href="/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
 </head>
-<style type="text/css">
-.blinking-cursor {
-  font-weight: 200;
-  font-size: 20px;
-  color: #2E3D48;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
-}
-
-@keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-moz-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-webkit-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-ms-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-o-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-.navbar{
-  border-radius: 0;
-}
-
-/*@media only screen and (min-width: 900px) {*/
-.navbar-fixed-top {
-  height: 35px !important;
-  min-height:10px;
-}
-
-body{
-  background: white;
-  color: black;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
-}
-
-.title_bar_text{
-  margin-left: 15px;
-  color: white;
-}
-
-h1,h2,h3, h4{
-  font-weight: 300;
-}
-.content_heading{
-  margin-left: 5px;
-}
-.content{
-  margin-left: 30px;
-}
-.main_content{
-  /*margin-top: 40px;*/
-}
-.section_heading{
-  padding-top: 40px;
-}
-img{
-  vertical-align: middle !important;
-}
-
-p{
-  font-size: 16px;
-}
-#news_list li, #achievements_list li{
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.contact_div{
-  margin-bottom: 30px;
-}
-
-.project_list{
-  margin-bottom: 20px;
-}
-.panel{
-  margin-bottom: 0px;
-}
-.navbar-right li{
-  color: white;
-}
-.thumb {
-    margin: 20px 0;
-    border: 1px solid #808080;
-}
-.conf{
-  color: blue;
-  font-weight: 500;
-}
-.white-text{
-  color: white;
-}
-
-#picture {
-  border-radius: 50%;
-}
-
-</style>
-<body>
-  <nav class="navbar navbar-fixed right">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a target="_blank" href="http://github.com/bhavanj">Github</a></li>
-        <li><a href="#news">News</a></li>
-        <!-- <li><a href="#publications">Publications</a></li> -->
-        <li><a href="#projects">Projects</a></li>
-        <!-- <li><a href="#experience">Experience</a></li> -->
-        <!-- <li><a href="#skills">Skills</a></li> -->
-        <!-- <li><a href="#achievements">Achievements</a></li> -->
-        <li><a href="#contact">Contact Me</a></li>
-        <li><a href="/files/Bhavan_Jasani_CV.pdf" target="_blank">CV</a></li>
-        <!-- <li><a href="/static/docs/Bhavan_Jasani_CV.pdf" target="_blank">CV</a></li> -->
-      </ul>
+<body class="bg-neutral-50 text-neutral-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 backdrop-blur bg-neutral-50/70 border-b border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="#top" class="font-semibold text-lg">Bhavan Jasani</a>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="#about" class="hover:opacity-70">About</a>
+        <a href="#experience" class="hover:opacity-70">Experience</a>
+        <a href="#publications" class="hover:opacity-70">Publications</a>
+        <a href="#cv" class="hover:opacity-70">CV</a>
+        <a href="#contact" class="hover:opacity-70">Contact</a>
+      </nav>
     </div>
-  </nav>
-  <div class="container">
-    <h1 align="center">Bhavan Jasani</h1>
-    <p align="center"><a target="_blank" href="http://github.com/bhavanj">@bhavanj</a></p>
-    <div align="center">
-      <img id="picture" src="/static/img/BJ_profile_pic.jpg" height="275px;">
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="grid md:grid-cols-5 gap-10 items-center">
+        <div class="md:col-span-3 space-y-6">
+          <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Applied Scientist · Computer Vision & Multimodal AI</h1>
+          <p class="text-neutral-700 leading-relaxed">I build practical machine learning systems at the intersection of <span class="font-medium">vision</span>, <span class="font-medium">language</span>, and <span class="font-medium">reasoning</span>. My work spans document intelligence, visual grounding, and chart VQA—shipping research to production.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#publications" class="px-4 py-2 rounded-xl bg-neutral-900 text-white hover:bg-black">Publications</a>
+            <a href="#cv" class="px-4 py-2 rounded-xl bg-neutral-900 text-white hover:bg-black">Download CV</a>
+          </div>
+        </div>
+        <div class="md:col-span-2 space-y-4">
+          <img src="/assets/images/profile.jpg" alt="Portrait of Bhavan Jasani" class="w-56 h-56 rounded-2xl border border-neutral-200 shadow-sm object-cover mx-auto" />
+          <div class="bg-white border border-neutral-200 rounded-2xl p-6 shadow-sm">
+            <ul class="text-sm space-y-2">
+              <li><span class="font-medium">Email:</span> <a href="mailto:bjasani@alumni.cmu.edu" class="underline">bjasani@alumni.cmu.edu</a></li>
+              <li><span class="font-medium">LinkedIn:</span> <a class="underline" href="https://www.linkedin.com/in/bhavan-jasani" target="_blank" rel="noreferrer">/in/bhavan-jasani</a></li>
+              <li><span class="font-medium">Google Scholar:</span> <a class="underline" href="https://scholar.google.com/citations?hl=en&user=NYEz_7YAAAAJ" target="_blank" rel="noreferrer">Scholar Profile</a></li>
+              <li><span class="font-medium">GitHub:</span> <a class="underline" href="https://github.com/BhavanJ" target="_blank" rel="noreferrer">@BhavanJ</a></li>
+              <li><span class="font-medium">Location:</span> San Francisco Bay Area</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="about"></div>
-    <div id="news"></div>
-    <!-- <div id="publications"></div> -->
-    <!-- <div id="education"></div> -->
-    <div id="projects"></div>
-    <!-- <div id="experience"></div> -->
-    <!-- <div id="skills"></div> -->
-    <div id="contact"></div>
-    <div id="personal"></div>
-  </div>
+  </section>
 
-  <div class="panel">
-    <div class="panel-footer" align="center">&#9400; Bhavan Jasani</div>
-  </div>
+  <!-- About -->
+  <section id="about" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-4">About</h2>
+      <div class="prose max-w-none text-neutral-700">
+        <p>I'm an Applied Scientist II focused on computer vision and multimodal learning. My work bridges research and product—turning ideas into shipped features like document VQA and multimodal assistants. Increasingly, I'm motivated to apply AI to <strong>healthcare‑impactful</strong> problems that improve patient outcomes. Areas: document intelligence (layout‑aware transformers), visual grounding, chart reasoning/VQA, synthetic data generation, and efficient training/inference at scale.</p>
+      </div>
+    </div>
+  </section>
 
-  <script type="text/javascript">
-    $( document ).ready(function() {
-      $("#about").load("templates/about.html");
-      $("#news").load("templates/news.html");
-      // $("#publications").load("templates/publications.html");
-      $("#projects").load("templates/projects.html");
-      // $("#experience").load("templates/experience.html");
-      // $("#skills").load("templates/skills.html");
-      // $("#education").load("templates/education.html");
-      // $("#achievements").load("templates/achievements.html");
-      $("#contact").load("templates/contact.html");
-      $("#personal").load("templates/personal.html");
-    });
-  </script>
+  <!-- Experience -->
+  <section id="experience" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Experience</h2>
+      <ol class="space-y-5">
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-center">
+            <div class="sm:col-span-2 flex justify-center">
+              <img src="/assets/images/amazon-logo.png" alt="Amazon AWS AI Labs" class="w-24 h-24 object-contain"/>
+            </div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Amazon AWS AI Labs</h3>
+              <p class="text-sm">Applied Scientist II</p>
+              <p class="text-xs text-neutral-600">Sep 2019 – Present</p>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-center">
+            <div class="sm:col-span-2 flex justify-center">
+              <img src="/assets/images/cmu-logo.png" alt="Carnegie Mellon University" class="w-24 h-24 object-contain"/>
+            </div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Carnegie Mellon University, Robotics Institute</h3>
+              <p class="text-sm">Research Assistant</p>
+              <p class="text-xs text-neutral-600">Oct 2017 – Aug 2019</p>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-center">
+            <div class="sm:col-span-2 flex justify-center">
+              <img src="/assets/images/ntu-logo.png" alt="Nanyang Technological University" class="w-24 h-24 object-contain"/>
+            </div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Nanyang Technological University, Singapore</h3>
+              <p class="text-sm">Research Assistant</p>
+              <p class="text-xs text-neutral-600">May 2016 – Aug 2016</p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  <!-- Publications -->
+  <section id="publications" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Selected Publications</h2>
+      <ol class="space-y-5">
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/chart-vqa-synthesize-step-by-step.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="Chart VQA"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Synthesize Step-by-Step: Tools, Templates and LLMs as Data Generators for Reasoning-Based Chart VQA</h3>
+              <p class="text-sm text-neutral-700">CVPR 2024. Li, <span class="italic">Jasani</span>, Tang, Ghadar.</p>
+              <a class="underline text-sm" href="/assets/papers/Li_Synthesize_Step-by-Step_Tools_Templates_and_LLMs_as_Data_Generators_for_CVPR_2024_paper.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/yoro-eccv22w.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="YORO"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">YORO: Lightweight End-to-End Visual Grounding</h3>
+              <p class="text-sm text-neutral-700">ECCV 2022 Workshops. Ho, Appalaraju, <span class="italic">Jasani</span>, Manmatha, Vasconcelos.</p>
+              <a class="underline text-sm" href="/assets/papers/YORO.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/docformer-iccv21.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="DocFormer"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">DocFormer: End-to-End Transformer for Document Understanding</h3>
+              <p class="text-sm text-neutral-700">ICCV 2021. Appalaraju, <span class="italic">Jasani</span>, Kota, Xie, Manmatha.</p>
+              <a class="underline text-sm" href="/assets/papers/Appalaraju_DocFormer_End-to-End_Transformer_for_Document_Understanding_ICCV_2021_paper.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/movieqa.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="MovieQA"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Are We Asking the Right Questions in MovieQA?</h3>
+              <p class="text-sm text-neutral-700">ICCV 2019 Workshop. <span class="italic">Bhavan Jasani</span> et al.</p>
+              <a class="underline text-sm" href="/assets/papers/MovieQApaper.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/cmu-thesis-2019.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="CMU Thesis"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Automatic detection of human affective behavior in dyadic conversations</h3>
+              <p class="text-sm text-neutral-700">CMU RI Technical Report (Master's Thesis), 2019. <span class="italic">Bhavan Jasani</span>.</p>
+              <a class="underline text-sm" href="/assets/papers/BJ_thesis_final_upload.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/pose-action.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="Pose Action Recognition"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Skeleton-based Zero Shot Action Recognition in Joint Pose-Language Semantic Space</h3>
+              <p class="text-sm text-neutral-700">Workshop 2019. <span class="italic">Bhavan Jasani</span> et al.</p>
+              <a class="underline text-sm" href="/assets/papers/Pose based action recognition.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+        <li class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 items-start">
+            <div class="sm:col-span-2"><img src="/assets/images/harris-corner-tcsvt2017.png" class="w-52 h-36 object-contain border border-neutral-200 rounded-xl" alt="T-CSVT Harris Corner"/></div>
+            <div class="sm:col-span-4">
+              <h3 class="font-medium">Threshold-Guided Design and Optimization for Harris Corner Detector Architecture</h3>
+              <p class="text-sm text-neutral-700">IEEE T-CSVT, 2017. <span class="italic">Jasani</span>, Lam, Meher, Wu.</p>
+              <a class="underline text-sm" href="/assets/papers/Jasani2018ThresholdSMAT.pdf">PDF</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-    ga('create', 'UA-76678346-1', 'auto');
-    ga('send', 'pageview');
+  <!-- CV -->
+  <section id="cv" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Curriculum Vitae</h2>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-6 shadow-sm">
+        <p class="text-sm text-neutral-700">Download my latest CV (updated 2025):</p>
+        <div class="mt-3 flex flex-wrap items-center gap-3">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-900 text-white hover:bg-black" href="/assets/cv/Bhavan_Jasani_CV_2025.pdf" download>
+            <span>Download PDF</span>
+          </a>
+          <a class="underline text-sm" href="/assets/cv/Bhavan_Jasani_CV_2025.pdf" target="_blank" rel="noreferrer">Open in new tab</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </script>
+  <!-- Contact -->
+  <section id="contact" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-4">Contact</h2>
+      <p class="text-neutral-700">Email is best. For collaborations, please include a brief summary and relevant links.</p>
+    </div>
+  </section>
 
-</body>
-</html>
+  <footer class="py-10 border-t border-neutral-200">
+    <div class="max
