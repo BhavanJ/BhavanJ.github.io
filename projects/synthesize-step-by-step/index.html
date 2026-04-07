@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synthesize Step-by-Step: Tools, Templates and LLMs as Data Generators for Reasoning-Based Chart VQA</title>
+  <meta name="description" content="CVPR 2024 paper: We leverage LLMs to generate step-by-step reasoning data for chart visual question answering, improving state-of-the-art accuracy from 38% to 54% on human-written ChartQA questions." />
+  <meta name="keywords" content="Chart VQA, LLM, synthetic data, step-by-step reasoning, CVPR 2024, ChartQA, PlotQA, data augmentation, multimodal" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Synthesize Step-by-Step: Tools, Templates and LLMs as Data Generators for Reasoning-Based Chart VQA" />
+  <meta property="og:description" content="CVPR 2024 — We leverage LLMs to generate step-by-step reasoning annotations for chart VQA, improving accuracy from 38% to 54% on human-written ChartQA questions." />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Synthesize Step-by-Step (CVPR 2024)" />
+  <meta name="twitter:description" content="LLM-based data generator with step-by-step reasoning for chart VQA. State-of-the-art on ChartQA and PlotQA." />
+
+  <link rel="icon" href="/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 backdrop-blur bg-neutral-50/70 border-b border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="/" class="font-semibold text-lg">Bhavan Jasani</a>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="/#publications" class="hover:opacity-70">Publications</a>
+        <a href="#abstract" class="hover:opacity-70">Abstract</a>
+        <a href="#method" class="hover:opacity-70">Method</a>
+        <a href="#results" class="hover:opacity-70">Results</a>
+        <a href="#citation" class="hover:opacity-70">BibTeX</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Title -->
+  <section class="py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <p class="text-sm font-medium text-blue-700">CVPR 2024</p>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight max-w-4xl mx-auto">
+        Synthesize Step-by-Step: Tools, Templates and LLMs as Data Generators for Reasoning-Based Chart VQA
+      </h1>
+
+      <!-- Authors -->
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-neutral-700">
+        <span>Zhuowan Li<sup>1</sup>*</span>
+        <span class="font-semibold">Bhavan Jasani<sup>2</sup>*</span>
+        <span>Peng Tang<sup>2</sup></span>
+        <span>Shabnam Ghadar<sup>2</sup></span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-xs text-neutral-500">
+        <span><sup>1</sup> Johns Hopkins University</span>
+        <span><sup>2</sup> AWS AI Labs</span>
+        <span>* Equal contribution</span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <a href="https://arxiv.org/abs/2403.16385" target="_blank" rel="noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-900 text-white hover:bg-black text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          arXiv
+        </a>
+        <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Li_Synthesize_Step-by-Step_Tools_Templates_and_LLMs_as_Data_Generators_for_CVPR_2024_paper.pdf" target="_blank" rel="noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-900 text-white hover:bg-black text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF
+        </a>
+        <a href="#citation"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 hover:bg-neutral-100 text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+          Cite
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser Figure -->
+  <section class="pb-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-6 shadow-sm">
+        <img src="/assets/images/chart-vqa-synthesize-step-by-step.png"
+             alt="Overview: Existing chart VQA models struggle with complex reasoning questions. Our LLM-based data generator creates step-by-step reasoning annotations (LaMenDa), improving accuracy from 38% to 54%."
+             class="w-full rounded-xl" />
+        <p class="text-sm text-neutral-600 mt-4 leading-relaxed">
+          <strong>Figure 1.</strong> Existing chart VQA models struggle with complex reasoning questions. We fine-tune an LLM-based data generator that automatically generates question-answer annotations given a chart image. Our key innovation is <em>Synthesize Step-by-Step</em>, which breaks complex questions into easy steps that are solved using external tools. Training with LLM-augmented data (<span class="font-medium">LaMenDa</span>) greatly enhances chart VQA models, improving accuracy from 38% to 54% on human-written ChartQA questions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section id="abstract" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Abstract</h2>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-sm text-neutral-700 leading-7">
+        <p>
+          Understanding data visualizations like charts and plots requires reasoning about both visual elements and numerics. Although strong in extractive questions, current chart visual question answering (chart VQA) models suffer on complex reasoning questions. In this work, we address the lack of reasoning ability by data augmentation. We leverage Large Language Models (LLMs), which have shown to have strong reasoning ability, as an automatic data annotator that generates question-answer annotations for chart images. The key innovation in our method lies in the <em>Synthesize Step-by-Step</em> strategy: our LLM-based data generator learns to decompose the complex question into step-by-step sub-questions (rationales), which are then used to derive the final answer using external tools, i.e. Python. This step-wise generation procedure is trained on synthetic data generated using a template-based QA generation pipeline. Experimental results highlight the significance of the proposed step-by-step generation. By training with the LLM-augmented data (LaMenDa), we significantly enhance the chart VQA models, achieving the state-of-the-art accuracy on the ChartQA and PlotQA datasets. In particular, our approach improves the accuracy of the previous state-of-the-art approach from 38% to 54% on the human-written questions in the ChartQA dataset, which needs strong reasoning. We hope our work underscores the potential of synthetic data and encourages further exploration of data augmentation using LLMs for reasoning-heavy tasks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Contributions -->
+  <section class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Key Contributions</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-medium mb-2">Step-by-Step Reasoning</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed">LLM-based data generator decomposes complex chart questions into atomic sub-questions with executable rationales, using external tools like Python to derive answers.</p>
+        </div>
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-medium mb-2">LaMenDa Dataset</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed">Large-scale LLM-augmented dataset with step-by-step annotations, generated across ChartQA, PlotQA, and chart captioning datasets (1.6M+ QA pairs).</p>
+        </div>
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="font-medium mb-2">State-of-the-Art Results</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed">Achieves new SOTA on ChartQA and PlotQA. Improves human-written question accuracy from 38% to 54% (+16 points) on ChartQA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section id="method" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Method</h2>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-6 shadow-sm space-y-6">
+        <div>
+          <h3 class="font-medium mb-3">Architecture Overview</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed mb-4">
+            Our LLM-based data generator takes three inputs: (1) projected image features from a ViT encoder, (2) the underlying data table predicted by DePlot, and (3) a natural language prompt. The model generates complex reasoning questions with step-by-step rationales that are executed as Python programs to derive answers.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-medium mb-3">Synthesize Step-by-Step vs. Straight-Forward Generation</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed mb-4">
+            Instead of generating question-answer pairs directly (straight-forward), our step-by-step approach trains the LLM to first generate the question, then decompose it into atomic sub-questions (rationales). Each rationale is an executable program — either an extractive VQA call or a Python operation (avg, sum, comparison, etc.). The rationale program is then executed to derive the final answer, ensuring correctness.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-medium mb-3">Template-Based Training Corpus</h3>
+          <p class="text-sm text-neutral-700 leading-relaxed">
+            To train the step-by-step generator, we construct a template-based QA corpus using 28 manually created question templates. These templates are instantiated by querying rich SVG annotations of chart images, producing 357K question-answer pairs with executable rationales. This template-generated corpus teaches the LLM how to decompose questions step-by-step.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Results</h2>
+      <div class="space-y-6">
+
+        <!-- ChartQA Results -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+          <h3 class="font-medium mb-4">ChartQA Test Split &mdash; Comparison with State-of-the-Art</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-neutral-200">
+                  <th class="py-2 pr-4 font-medium">Model</th>
+                  <th class="py-2 px-3 font-medium text-right">Avg</th>
+                  <th class="py-2 px-3 font-medium text-right">Human</th>
+                  <th class="py-2 px-3 font-medium text-right">Augmented</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-700">
+                <tr class="border-b border-neutral-100">
+                  <td class="py-2 pr-4">MatCha</td>
+                  <td class="py-2 px-3 text-right">64.2</td>
+                  <td class="py-2 px-3 text-right">38.2</td>
+                  <td class="py-2 px-3 text-right">90.2</td>
+                </tr>
+                <tr class="border-b border-neutral-100">
+                  <td class="py-2 pr-4">Pix2Struct</td>
+                  <td class="py-2 px-3 text-right">56.0</td>
+                  <td class="py-2 px-3 text-right">30.5</td>
+                  <td class="py-2 px-3 text-right">81.6</td>
+                </tr>
+                <tr class="border-b border-neutral-100">
+                  <td class="py-2 pr-4">DePlot+FlanPaLM+Codex</td>
+                  <td class="py-2 px-3 text-right">79.3</td>
+                  <td class="py-2 px-3 text-right">67.6</td>
+                  <td class="py-2 px-3 text-right">91.0</td>
+                </tr>
+                <tr class="border-b border-neutral-100 font-medium">
+                  <td class="py-2 pr-4">Pix2Struct + LaMenDa (Ours)</td>
+                  <td class="py-2 px-3 text-right">66.82</td>
+                  <td class="py-2 px-3 text-right">51.67</td>
+                  <td class="py-2 px-3 text-right">81.98</td>
+                </tr>
+                <tr class="font-semibold bg-neutral-50">
+                  <td class="py-2 pr-4">MatCha + LaMenDa (Ours)</td>
+                  <td class="py-2 px-3 text-right">72.64</td>
+                  <td class="py-2 px-3 text-right">53.92</td>
+                  <td class="py-2 px-3 text-right">91.36</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-neutral-500 mt-3">Relaxed accuracy (%) on ChartQA test split. With our generated data, both Pix2Struct and MatCha achieve significantly better performance on human-written questions requiring complex reasoning. Note: DePlot+FlanPaLM+Codex relies on much larger models (540B) and external LLMs.</p>
+        </div>
+
+        <!-- Key Numbers -->
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm text-center">
+            <p class="text-3xl font-bold text-blue-700">+16%</p>
+            <p class="text-sm text-neutral-600 mt-1">Human-written accuracy improvement on ChartQA</p>
+          </div>
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm text-center">
+            <p class="text-3xl font-bold text-blue-700">72.6%</p>
+            <p class="text-sm text-neutral-600 mt-1">Best relaxed accuracy on ChartQA (SOTA for end-to-end models)</p>
+          </div>
+          <div class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm text-center">
+            <p class="text-3xl font-bold text-blue-700">92.9%</p>
+            <p class="text-sm text-neutral-600 mt-1">SOTA relaxed accuracy on PlotQA</p>
+          </div>
+        </div>
+
+        <!-- PlotQA Results -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+          <h3 class="font-medium mb-4">PlotQA Test Split</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-neutral-200">
+                  <th class="py-2 pr-4 font-medium">Model</th>
+                  <th class="py-2 px-3 font-medium text-right">Avg</th>
+                  <th class="py-2 px-3 font-medium text-right">V1</th>
+                  <th class="py-2 px-3 font-medium text-right">V2</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-700">
+                <tr class="border-b border-neutral-100">
+                  <td class="py-2 pr-4">MatCha</td>
+                  <td class="py-2 px-3 text-right">91.5</td>
+                  <td class="py-2 px-3 text-right">92.3</td>
+                  <td class="py-2 px-3 text-right">90.7</td>
+                </tr>
+                <tr class="font-semibold bg-neutral-50">
+                  <td class="py-2 pr-4">MatCha + LaMenDa (Ours)</td>
+                  <td class="py-2 px-3 text-right">92.89</td>
+                  <td class="py-2 px-3 text-right">93.94</td>
+                  <td class="py-2 px-3 text-right">91.84</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-neutral-500 mt-3">Relaxed accuracy (%) on PlotQA test split. Our augmented data improves performance even on this large synthetic dataset.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Video (placeholder) -->
+  <section id="video" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Video</h2>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+        <!-- Replace the div below with your YouTube embed once uploaded -->
+        <!-- Example: <iframe class="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+        <div class="w-full aspect-video rounded-xl bg-neutral-100 flex items-center justify-center">
+          <p class="text-neutral-500 text-sm">Video coming soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="citation" class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Citation</h2>
+      <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-sm">
+        <p class="text-sm text-neutral-700 mb-4">If you find this work useful, please cite our paper:</p>
+        <div class="relative">
+          <pre id="bibtex" class="bg-neutral-50 border border-neutral-200 rounded-xl p-4 text-xs leading-relaxed overflow-x-auto select-all">@inproceedings{li2024synthesize,
+  title={Synthesize Step-by-Step: Tools, Templates and LLMs as Data Generators for Reasoning-Based Chart VQA},
+  author={Li, Zhuowan and Jasani, Bhavan and Tang, Peng and Ghadar, Shabnam},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={13613--13623},
+  year={2024}
+}</pre>
+          <button onclick="copyBibtex()" id="copy-btn"
+                  class="absolute top-3 right-3 px-3 py-1.5 text-xs rounded-lg bg-neutral-900 text-white hover:bg-black transition-colors">
+            Copy
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="py-12 sm:py-16 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-semibold mb-6">Links</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="https://arxiv.org/abs/2403.16385" target="_blank" rel="noreferrer"
+           class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm hover:border-neutral-400 transition-colors">
+          <h3 class="font-medium">arXiv</h3>
+          <p class="text-sm text-neutral-600 mt-1">Preprint with full paper and supplementary materials</p>
+        </a>
+        <a href="https://openaccess.thecvf.com/content/CVPR2024/html/Li_Synthesize_Step-by-Step_Tools_Templates_and_LLMs_as_Data_Generators_for_CVPR_2024_paper.html" target="_blank" rel="noreferrer"
+           class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm hover:border-neutral-400 transition-colors">
+          <h3 class="font-medium">CVF Open Access</h3>
+          <p class="text-sm text-neutral-600 mt-1">Official CVPR 2024 proceedings version</p>
+        </a>
+        <a href="https://www.amazon.science/publications/synthesize-step-by-step-tools-templates-and-llms-as-data-generators-for-reasoning-based-chart-vqa" target="_blank" rel="noreferrer"
+           class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm hover:border-neutral-400 transition-colors">
+          <h3 class="font-medium">Amazon Science</h3>
+          <p class="text-sm text-neutral-600 mt-1">Publication page on Amazon Science</p>
+        </a>
+        <a href="https://scholar.google.com/scholar?q=Synthesize+Step-by-Step+Tools+Templates+LLMs+Chart+VQA" target="_blank" rel="noreferrer"
+           class="bg-white border border-neutral-200 rounded-2xl p-5 shadow-sm hover:border-neutral-400 transition-colors">
+          <h3 class="font-medium">Google Scholar</h3>
+          <p class="text-sm text-neutral-600 mt-1">View citation metrics and citing papers</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-neutral-500">
+      &copy; 2025 Bhavan Jasani. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function copyBibtex() {
+      const bibtex = document.getElementById('bibtex').innerText;
+      navigator.clipboard.writeText(bibtex).then(function() {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
