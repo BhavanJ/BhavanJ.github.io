@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# iCloud placeholders
+*.icloud
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Editors
+.vscode/
+.idea/
+
+# Node
+node_modules/
